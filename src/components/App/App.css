@@ -1,0 +1,70 @@
+
+#backgroud {
+  background-color: black;
+}
+
+.App {
+  text-align: center;
+}
+
+section {
+  display: inline-block;
+}
+
+.margin-left{
+  margin-left: 15px;
+}
+
+.margin-right{
+  margin-right: 15px;
+}
+
+.App-header {
+  background-color: #222;
+  height: auto;
+  padding: 20px;
+  color: white;
+}
+
+.table {
+  align-content: center;
+  margin: 20px;
+  width: 400px;
+  height: auto;
+  
+}
+
+.App-title {
+  font-size: 1.5em;
+}
+
+#card{
+  margin: 25px;
+  height: auto;
+  min-width: 350px;
+}
+
+.App-intro {
+  font-size: large;
+}
+
+#image {
+  width: 17%;
+  height: 17%;
+  overflow: hidden;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.float-right {
+  margin: 5px;
+}
+
+#giveMargin{
+  margin-top: 10px;
+}
+
+.marginBottom{
+  margin-bottom: 10px;
+}

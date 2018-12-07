@@ -1,0 +1,111 @@
+const express = require('express');
+const router = express.Router();
+const pg = require('pg');
+
+// DO NOT MODIFY THIS FILE FOR BASE MODE
+// DB CONNECTION
+const config = {
+    database: 'portfolio',
+    host: 'localhost',
+    port: 5432,
+    max: 10,
+    idleTimeoutMillis: 30000
+};
+const pool = new pg.Pool(config);
+
+pool.on("connect", () => {
+    console.log('connected');
+});
+
+pool.on("error", (err) => {
+    console.log('not connected', err);
+});
+
+// GET Route to get projects 
+router.get('/', (req, res) => {
+    let sqlText = `SELECT "projects".*, "tags"."name" as "tag" FROM "projects"
+    JOIN "tags" ON "projects"."tag_id" = "tags"."id" ORDER BY "tag_id" DESC;
+    
+    `;
+    pool.query(sqlText)
+        .then((result) => {
+            res.send(result.rows);
+            console.log(result.rows);
+            
+        })
+        .catch((error) => {
+            console.log('error', error);
+            res.sendStatus(500);
+        })
+}); // END GET Route
+
+// GET Route to get tags 
+router.get('/tags', (req, res) => {
+    let sqlText = `SELECT * FROM "tags" ORDER BY "id" DESC;`;
+    pool.query(sqlText)
+        .then((result) => {
+            res.send(result.rows);
+            console.log(result.rows);
+
+        })
+        .catch((error) => {
+            console.log('error', error);
+            res.sendStatus(500);
+        })
+}); // END GET Route
+
+// POST to projects table
+router.post('/', (req, res) => {
+    let projects = req.body;
+    console.log(projects);
+    let sqlText = `INSERT INTO projects (name, description, thumbnail, website, github, date_completed, tag_id)
+    VALUES ($1, $2, $3, $4, $5, $6, $7);`
+    pool.query(sqlText, [projects.name, projects.thumbnail, projects.description, projects.website,
+        projects.github, projects.date_completed, projects.tag_id])
+        .then((result) => {
+            console.log(result);
+            res.send(projects);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        })
+})
+
+
+// DELETE
+router.delete('/delete/:id', (req, res) => {
+    let reqId = req.params.id;
+    console.log('Delete request for id', reqId);
+    let sqlText = `DELETE FROM projects WHERE id=$1;`;
+    console.log(sqlText);
+
+    pool.query(sqlText, [reqId])
+        .then((result) => {
+            console.log('project deleted');
+            res.sendStatus(200);
+        })
+        .catch((error) => {
+            console.log(`Error in deleting ${sqlText}`, error);
+            res.sendStatus(500);
+        })
+})
+
+// POST to tags table to join?
+router.post('/tags', (req, res) => {
+    let projects = req.body;
+    console.log(projects);
+    let sqlText = `INSERT INTO projects (name)
+    VALUES ($1);`
+    pool.query(sqlText, [ projects.tag_id ])
+        .then((result) => {
+            console.log(result);
+            res.send(projects);
+        })
+        .catch((error) => {
+            console.log(error);
+            res.sendStatus(500);
+        })
+})
+
+module.exports = router;
