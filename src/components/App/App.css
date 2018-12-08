@@ -49,8 +49,8 @@ section {
 }
 
 #image {
-  width: 17%;
-  height: 17%;
+  width: 200px;
+  height: 200px;
   overflow: hidden;
   -moz-border-radius: 50%;
   -webkit-border-radius: 50%;
@@ -67,4 +67,8 @@ section {
 
 .marginBottom{
   margin-bottom: 10px;
+}
+
+.padding {
+    padding: 20px;
 }

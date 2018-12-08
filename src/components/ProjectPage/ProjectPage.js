@@ -37,23 +37,29 @@ class ProjectPage extends Component {
                     </nav>
                 </Router>
             <header className="App-header">
-                <div>
-                    <img id="image" alt = "Jessica Stephens"
-                     src = "https://media.licdn.com/dms/image/C4D03AQEVewqHZM1MfA/profile-displayphoto-shrink_200_200/0?e=1547683200&v=beta&t=S2R9qtqh6yqX6W9FniBav3smGT4B8yx7--qoqMhTzBU"/>
-                </div>
-            <h1>Jessica Stephens</h1>
-            <h4>Full Stack Software Developer</h4>
+                <div className="padding">
+                    <div>
+                        <img id="image" alt = "Jessica Stephens"
+                        src = "https://media.licdn.com/dms/image/C4D03AQEVewqHZM1MfA/profile-displayphoto-shrink_200_200/0?e=1547683200&v=beta&t=S2R9qtqh6yqX6W9FniBav3smGT4B8yx7--qoqMhTzBU"/>
+                    </div>
+                    <div className="padding">
+                    <h4>Jessica Stephens</h4>
+                    <h4>Full Stack Software Developer</h4>
+                        </div>
+               
             <Router>
                 <div>
               <section className="margin-left">
                     <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">LinkedIn</a>
                 </section>   
                 <section className="margin-left">
-                    <a  target="_blank" rel="noopener noreferrer" href="github.com/jeslstep?tab=repositories"> Github</a>
+                    <a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Github</a>
                 </section>
                 </div>
             </Router>
+                    </div>
             </header> 
+             
             <section id="backgroud">
           <ProjectCard />
     </section>

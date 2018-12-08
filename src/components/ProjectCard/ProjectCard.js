@@ -16,8 +16,8 @@ class ProjectCard extends Component {
   return (
     <div>
         {this.props.reduxState.projects.map( project =>(
-          <section>
-          <Card id="card" key={project.id}>
+          <section key={project.id}>
+          <Card id="card">
             <CardActionArea>
               <CardMedia
                 component="img"
@@ -26,7 +26,7 @@ class ProjectCard extends Component {
                 src = "https://via.placeholder.com/160x80"
                 title="Contemplative Reptile"
               />
-                <p><Chip className="float-right" label={project.tag} variant="outlined"/></p>
+              <Chip className="float-right" label={project.tag} variant="outlined"/>
               <CardContent>
                 <h2 id="giveMargin">{project.name}</h2>
                 <p>{moment(project.date_completed).format('MMMM Do YYYY')}</p>
