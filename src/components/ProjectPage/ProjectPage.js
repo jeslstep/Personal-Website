@@ -9,22 +9,11 @@ class ProjectPage extends Component {
     // run getProjects when page loads
     componentDidMount() {
          this.getProject();
-         this.getTag();
     }
 
     // getProject dispatches a call to get projects 
      getProject = (event) => {
         this.props.dispatch({type: 'GET_PROJECTS'});
-    }
-
-    // getProject dispatches a call to get projects 
-    getTag = (event) => {
-        this.props.dispatch({type: 'GET_TAGS'});
-    }
-
-    // eslint-disable-line no-alert
-    handleClick() {
-        alert('You clicked the Chip.'); 
     }
 
   // Renders the entire app on the DOM
@@ -44,7 +33,7 @@ class ProjectPage extends Component {
                     </div>
                     <div className="padding">
                     <h4>Jessica Stephens</h4>
-                    <h4>Full Stack Software Developer</h4>
+                    <h4>Software Developer</h4>
                         </div>
                
             <Router>

@@ -34,7 +34,9 @@ class ProjectCard extends Component {
               </CardContent>
             </CardActionArea>
             <CardActions>
+             
               <a target="_blank" rel="noopener noreferrer" href={project.website}>Website</a>
+              
               <a target="_blank" rel="noopener noreferrer" href={project.github}> Github</a>
             </CardActions>
           </Card>

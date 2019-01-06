@@ -11,13 +11,18 @@ import Chip from '@material-ui/core/Chip';
 class AdminPage extends Component {
     // Renders the entire app on the DOM
      componentDidMount() {
-         this.getProject();
-   
+        this.getProject();
+        this.getTags();
     }
 
     // getProject dispatches a call to get projects 
      getProject = (event) => {
         this.props.dispatch({type: 'GET_PROJECTS'});
+    }
+    
+    // get tags for menu
+    getTags = (event) => {
+        this.props.dispatch({type:'GET_TAGS'})
     }
 
     // stores the state to be sent
@@ -30,10 +35,7 @@ class AdminPage extends Component {
             website: '',
             github: '',
             date_completed: '',
-            tag_id: []
-        },
-        tag: {
-          name:  [],
+            tag_names:  [],
         },
     // controls menu
         anchorEl: null,
@@ -56,24 +58,24 @@ class AdminPage extends Component {
     this.setState({ anchorEl: event.currentTarget });
     };
 
-  // handles menu selection by dispathing the tag selection to be set
+    // handles menu selection by dispathing the tag selection to be set
     handleClose = (event) => {
     // menu item text
     console.log(event.target.innerText);
-        this.setState({
-             tag: {
-                 name: [...this.state.tag.name, 
-                    event.target.innerText]
-             }
-        })
-    console.log(event.target.value);
+        // this.setState({
+        //      tag: {
+        //          name: [...this.state.tag.name, 
+        //             event.target.innerText]
+        //      }
+        // })
+    console.log(event.target.name);
+    this.setState({ anchorEl: null });
          this.setState({
              projectPostObj: {
-                 ...this.state.projectPostObj,
-                 tag_id: event.target.value
+                 tag_names: [...this.state.projectPostObj.tag_names,
+                    event.target.innerText]
              }
          });
-    this.setState({ anchorEl: null });
     };
 
     // post projectPostObj
@@ -83,12 +85,13 @@ class AdminPage extends Component {
         this.props.dispatch({type: 'ADD_PROJECT', payload: this.state.projectPostObj}); 
          this.setState({
              projectPostObj: { ...this.state.projectPostObj,
+                tag:{ name:[] },
                 name: '',
                 description: '',
                 thumbnail: '',
                 website: '',
                 github: '',
-                tag_id: 0
+                
              }
          });
     }
@@ -121,58 +124,62 @@ class AdminPage extends Component {
             <h1>Add a Project:</h1>
         </header>
             <form onSubmit={this.projectPostObjPost}>
-                <section className="margin-right">
-                 <TextField id="standard-name" value={this.state.name} label = "Name" 
-                 onChange={this.handleChangeFor('name')}/>
-                    <br/>
-                 <TextField id="standard-name" value={this.state.description} label="Description" 
-                 onChange={this.handleChangeFor('description')}/>
-                    </section>
-                    <section className="margin-right">
-                 <TextField id="standard-name" value={this.state.thumbnail} label = "Thumbnail" 
-                 onChange={this.handleChangeFor('thumbnail')}/>
-                    <br/>
-                 <TextField id="standard-name" value={this.state.website} label="Website" 
-                 onChange={this.handleChangeFor('website')}/>
-                   </section>
-                   <section className="margin-right">
-                 <TextField id="standard-name" value={this.state.github} label = "Github" 
-                 onChange={this.handleChangeFor('github')}/>
-                    <br/>
-                 <TextField id="date" label="Date Completed" type="date" defaultValue="2017-05-24"
-                    onChange={this.handleChangeFor('date_completed')}/>
-                    </section>
-                    <br/>
-                 <Button
+                <Button
                     aria-owns={anchorEl ? 'simple-menu' : undefined}
                     aria-haspopup="true"
                     onClick={this.handleClick}>
-                    Select a Tag
-                    </Button>
+                    Select Tags
+                </Button>
                  <Menu
                  id="simple-menu"
                  anchorEl={anchorEl}
                  open={Boolean(anchorEl)}
                  onClose={this.handleClose}
                     >
-                    <MenuItem value="1" name="React" onClick={this.handleClose}>React</MenuItem>
-                    <MenuItem value="2" name="jQuery" onClick={this.handleClose}>jQuery</MenuItem>
+                    {this.props.reduxState.tags.map( tag => (
+                    <MenuItem key={tag.id} value={tag.id} name={tag.name} onClick={this.handleClose}>{tag.name}</MenuItem>
+                    ))}
+                    {/* <MenuItem value="2" name="React" onClick={this.handleClose}>jQuery</MenuItem>
                     <MenuItem value="3" name="Node" onClick={this.handleClose}>Node</MenuItem>
                     <MenuItem value="4" name="SQL" onClick={this.handleClose}>SQL</MenuItem>
-                    <MenuItem value="5" name=">Redux" onClick={this.handleClose}>Redux</MenuItem>
+                    <MenuItem value="5" name="Redux" onClick={this.handleClose}>Redux</MenuItem>
                     <MenuItem value="6" name="HTML" onClick={this.handleClose}>HTML</MenuItem>
-                    <MenuItem value="7" name="CSS3" onClick={this.handleClose}>CSS3</MenuItem>
+                    <MenuItem value="7" name="CSS" onClick={this.handleClose}>CSS</MenuItem>
                     <MenuItem value="8" name="Bootstrap" onClick={this.handleClose}>Bootstrap</MenuItem>
-                    <MenuItem value="9" name="Material UI" onClick={this.handleClose}>Material UI</MenuItem>
+                    <MenuItem value="9" name="Material UI" onClick={this.handleClose}>Material UI</MenuItem> */}
                     </Menu>
                     <br/>
-                    <div>
-                    <section>
-                    {this.state.tag.name.map( (name, index) => (
+                      <div>
+                    {/* <section>
+                    {
+                        this.state.projectPostObj.tag.name.map((name, index) => (
                         <Chip key={index} className="margin-left margin-top" label={name} variant="outlined"/>
                     ))}
-                    </section>
+                    </section> */}
                     </div>
+                <section className="margin-right">
+                 <TextField id="standard-name" value={this.state.name} label="Name" 
+                 onChange={this.handleChangeFor('name')}/>
+                    <br/>
+                 <TextField id="standard-name" value={this.state.description} label="Description" 
+                 onChange={this.handleChangeFor('description')}/>
+                    </section>
+                    <section className="margin-right">
+                 <TextField id="standard-name" value={this.state.thumbnail} label="Thumbnail" 
+                 onChange={this.handleChangeFor('thumbnail')}/>
+                    <br/>
+                 <TextField id="standard-name" value={this.state.website} label="Website" 
+                 onChange={this.handleChangeFor('website')}/>
+                   </section>
+                   <section className="margin-right">
+                 <TextField id="standard-name" value={this.state.github} label="Github" 
+                 onChange={this.handleChangeFor('github')}/>
+                    <br/>
+                 <TextField id="date" label="Date Completed" type="date" defaultValue="2017-05-24"
+                onChange={this.handleChangeFor('date_completed')}/>
+                    </section>
+                    <br/>
+                    {JSON.stringify(this.state.projectPostObj)}
                     <br/>
                     <button className="btn btn-outline-success btn-md" type="submit">Add Project</button>
                 </form>
