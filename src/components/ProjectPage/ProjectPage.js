@@ -20,11 +20,11 @@ class ProjectPage extends Component {
     render() {
         return (
             <div className="App">
-                <Router>
+                {/* <Router>
                     <nav>
                         <p><Link to="/adminpage">Admin Page</Link></p>
                     </nav>
-                </Router>
+                </Router> */}
             <header className="App-header">
                 <div className="padding">
                     <div>
@@ -43,6 +43,9 @@ class ProjectPage extends Component {
                 </section>   
                 <section className="margin-left">
                     <a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Github</a>
+                </section>
+                  <section className="margin-left">
+                    <a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Resume</a>
                 </section>
                 </div>
             </Router>

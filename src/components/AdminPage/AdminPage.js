@@ -62,12 +62,6 @@ class AdminPage extends Component {
     handleClose = (event) => {
     // menu item text
     console.log(event.target.innerText);
-        // this.setState({
-        //      tag: {
-        //          name: [...this.state.tag.name, 
-        //             event.target.innerText]
-        //      }
-        // })
     console.log(event.target.name);
     this.setState({ anchorEl: null });
          this.setState({
@@ -108,7 +102,6 @@ class AdminPage extends Component {
         
     }
 
-
     render() {
     // controls menu
     const { anchorEl } = this.state; 
@@ -139,44 +132,36 @@ class AdminPage extends Component {
                     {this.props.reduxState.tags.map( tag => (
                     <MenuItem key={tag.id} value={tag.id} name={tag.name} onClick={this.handleClose}>{tag.name}</MenuItem>
                     ))}
-                    {/* <MenuItem value="2" name="React" onClick={this.handleClose}>jQuery</MenuItem>
-                    <MenuItem value="3" name="Node" onClick={this.handleClose}>Node</MenuItem>
-                    <MenuItem value="4" name="SQL" onClick={this.handleClose}>SQL</MenuItem>
-                    <MenuItem value="5" name="Redux" onClick={this.handleClose}>Redux</MenuItem>
-                    <MenuItem value="6" name="HTML" onClick={this.handleClose}>HTML</MenuItem>
-                    <MenuItem value="7" name="CSS" onClick={this.handleClose}>CSS</MenuItem>
-                    <MenuItem value="8" name="Bootstrap" onClick={this.handleClose}>Bootstrap</MenuItem>
-                    <MenuItem value="9" name="Material UI" onClick={this.handleClose}>Material UI</MenuItem> */}
                     </Menu>
                     <br/>
                       <div>
-                    {/* <section>
+                    <section>
                     {
-                        this.state.projectPostObj.tag.name.map((name, index) => (
+                        this.state.projectPostObj.tag_names.map((name, index) => (
                         <Chip key={index} className="margin-left margin-top" label={name} variant="outlined"/>
                     ))}
-                    </section> */}
+                    </section>
                     </div>
-                <section className="margin-right">
-                 <TextField id="standard-name" value={this.state.name} label="Name" 
-                 onChange={this.handleChangeFor('name')}/>
-                    <br/>
-                 <TextField id="standard-name" value={this.state.description} label="Description" 
-                 onChange={this.handleChangeFor('description')}/>
+                    <section className="margin-right">
+                    <TextField id="standard-name" value={this.state.name} label="Name" 
+                    onChange={this.handleChangeFor('name')}/>
+                        <br/>
+                    <TextField id="standard-name" value={this.state.description} label="Description" 
+                    onChange={this.handleChangeFor('description')}/>
+                        </section>
+                        <section className="margin-right">
+                    <TextField id="standard-name" value={this.state.thumbnail} label="Thumbnail" 
+                    onChange={this.handleChangeFor('thumbnail')}/>
+                        <br/>
+                    <TextField id="standard-name" value={this.state.website} label="Website" 
+                    onChange={this.handleChangeFor('website')}/>
                     </section>
                     <section className="margin-right">
-                 <TextField id="standard-name" value={this.state.thumbnail} label="Thumbnail" 
-                 onChange={this.handleChangeFor('thumbnail')}/>
-                    <br/>
-                 <TextField id="standard-name" value={this.state.website} label="Website" 
-                 onChange={this.handleChangeFor('website')}/>
-                   </section>
-                   <section className="margin-right">
-                 <TextField id="standard-name" value={this.state.github} label="Github" 
-                 onChange={this.handleChangeFor('github')}/>
-                    <br/>
-                 <TextField id="date" label="Date Completed" type="date" defaultValue="2017-05-24"
-                onChange={this.handleChangeFor('date_completed')}/>
+                    <TextField id="standard-name" value={this.state.github} label="Github" 
+                    onChange={this.handleChangeFor('github')}/>
+                        <br/>
+                    <TextField id="date" label="Date Completed" type="date" defaultValue="2017-05-24"
+                    onChange={this.handleChangeFor('date_completed')}/>
                     </section>
                     <br/>
                     {JSON.stringify(this.state.projectPostObj)}
