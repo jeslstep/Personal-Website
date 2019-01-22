@@ -108,6 +108,7 @@ class FileUpload extends Component {
                         <div>
                             <TextField 
                             type="file" 
+                            value={this.state.selectedFile}
                             onChange={this.handleSelectedFile}
                             onChange={this.props.handleChangeFor('thumbnail')}
                             />

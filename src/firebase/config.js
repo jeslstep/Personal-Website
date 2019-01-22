@@ -8,7 +8,7 @@ var config = {
     authDomain: "personal-website-93452.firebaseapp.com",
     databaseURL: "https://personal-website-93452.firebaseio.com",
     projectId: "personal-website-93452",
-    storageBucket: "",
+    storageBucket: "personal-website-93452.appspot.com",
     messagingSenderId: "659178451548"
 };
 

@@ -55,7 +55,7 @@ class ProjectPage extends Component {
                                     <Button color= "secondary" varient="contained"><a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Github</a></Button>
                                 </section>
                                 <section className="margin-left">
-                                    <Button color= "secondary" varient="contained"><a  target="_blank" rel="noopener noreferrer" href="https://firebasestorage.googleapis.com/v0/b/personal-website-93452.appspot.com/o/resume_jessica_stephens.pdf?alt=media&token=bc9ef453-e47a-49a4-84bf-e541e2b6e347"> Resume</a></Button>
+                                    <Button color= "secondary" varient="contained"><a  target="_blank" rel="noopener noreferrer" href="https://firebasestorage.googleapis.com/v0/b/personal-website-93452.appspot.com/o/jessica_stephens_resume.pdf?alt=media&token=94ed00ef-b479-4eed-8135-edd16335db14"> Resume</a></Button>
                                 </section>
                                 </div>
                                 </Router>

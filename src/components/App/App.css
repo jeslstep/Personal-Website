@@ -1,10 +1,12 @@
 
 .App {
+  font-family: 'Montserrat',
+  sans-serif;
   text-align: center;
   background-color: black;
   border-style: solid;
-  border-width: 3px;
-  border-color: red;
+  border-width: 4px;
+  border-color: #AE2F2C;
 }
 
 section {
@@ -24,6 +26,7 @@ section {
   height: auto;
   padding: 20px;
   color: white;
+ 
 }
 
 .table {
@@ -50,8 +53,8 @@ section {
 
 #image {
   border-style: solid;
-  border-width: 3px;
-  border-color: red;
+  border-width: 4px;
+  border-color: #AE2F2C;
   width: 200px;
   height: 200px;
   overflow: hidden;
