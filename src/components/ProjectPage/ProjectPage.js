@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import {HashRouter as Router, Link} from 'react-router-dom';
-import ProjectCard from '../ProjectCard/ProjectCard'
+import ProjectCard from '../ProjectCard/ProjectCard';
+import Button from '@material-ui/core/Button';
+
 
 
 class ProjectPage extends Component {
@@ -26,36 +28,43 @@ class ProjectPage extends Component {
                     </nav>
                 </Router> */}
             <header className="App-header">
-                <div className="padding">
-                    <div>
+                    {/* <section>
+                    <div className="quotetext">
+                     <h4>
+                        "I enjoy 
+                        contributing to the <br/>
+                        development of web and 
+                        mobile applications that help <br/>
+                        solve a variety of problems."
+                    </h4>
+                    </div>
+                    </section> */}
+                    <section>
                         <img id="image" alt = "Jessica Stephens"
-                        src = "https://media.licdn.com/dms/image/C4D03AQEVewqHZM1MfA/profile-displayphoto-shrink_200_200/0?e=1547683200&v=beta&t=S2R9qtqh6yqX6W9FniBav3smGT4B8yx7--qoqMhTzBU"/>
-                    </div>
-                    <div className="padding">
-                    <h4>Jessica Stephens</h4>
-                    <h4>Software Developer</h4>
-                        </div>
-               
-            <Router>
-                <div>
-              <section className="margin-left">
-                    <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">LinkedIn</a>
-                </section>   
-                <section className="margin-left">
-                    <a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Github</a>
-                </section>
-                  <section className="margin-left">
-                    <a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Resume</a>
-                </section>
-                </div>
-            </Router>
-                    </div>
-            </header> 
-             
-            <section id="backgroud">
+                        src = "https://avatars2.githubusercontent.com/u/40326640?s=460&v=4"/>
+                            <div className="padding">
+                            <h4 >Jessica Stephens</h4>
+                            <h4>Software Developer</h4>
+                            </div>
+                               <Router>
+                                <div>
+                                <section className="margin-left">
+                                    <Button color= "secondary" varient="contained"><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">LinkedIn</a></Button>
+                                </section>   
+                                <section className="margin-left">
+                                    <Button color= "secondary" varient="contained"><a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Github</a></Button>
+                                </section>
+                                <section className="margin-left">
+                                    <Button color= "secondary" varient="contained"><a  target="_blank" rel="noopener noreferrer" href="https://firebasestorage.googleapis.com/v0/b/personal-website-93452.appspot.com/o/resume_jessica_stephens.pdf?alt=media&token=bc9ef453-e47a-49a4-84bf-e541e2b6e347"> Resume</a></Button>
+                                </section>
+                                </div>
+                                </Router>
+                        </section>
+                </header> 
+                <hr/>
+            <h1 className="whitetext">Portfolio</h1>
           <ProjectCard />
-    </section>
-</div>
+        </div>
          );
     }
 }

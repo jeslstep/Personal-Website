@@ -150,8 +150,8 @@ class AdminPage extends Component {
                     onChange={this.handleChangeFor('description')}/>
                         </section>
                         <section className="margin-right">
-                    <TextField id="standard-name" value={this.state.thumbnail} label="Thumbnail" 
-                    onChange={this.handleChangeFor('thumbnail')}/>
+                    <TextField id="standard-name"  label="Thumbnail" 
+                    />
                         <br/>
                     <TextField id="standard-name" value={this.state.website} label="Website" 
                     onChange={this.handleChangeFor('website')}/>
