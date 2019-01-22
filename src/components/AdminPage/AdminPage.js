@@ -6,6 +6,8 @@ import Menu from '@material-ui/core/Menu';
 import MenuItem from '@material-ui/core/MenuItem';
 import {HashRouter as Router, Link} from 'react-router-dom';
 import Chip from '@material-ui/core/Chip';
+import ResumeUpload from './ResumeUpload';
+import Card from '@material-ui/core/Card';
 
 
 class AdminPage extends Component {
@@ -34,7 +36,6 @@ class AdminPage extends Component {
             thumbnail: '',
             website: '',
             github: '',
-            date_completed: '',
             tag_names:  [],
         },
     // controls menu
@@ -107,41 +108,51 @@ class AdminPage extends Component {
     const { anchorEl } = this.state; 
 
     return (
-        <div className="App">
-            <Router>
-            <nav>
-                <p><Link to="/">Project Page</Link></p>
-            </nav>
-            </Router>
-        <header className="App-header">
-            <h1>Add a Project:</h1>
-        </header>
-            <form onSubmit={this.projectPostObjPost}>
-                <Button
-                    aria-owns={anchorEl ? 'simple-menu' : undefined}
-                    aria-haspopup="true"
-                    onClick={this.handleClick}>
-                    Select Tags
-                </Button>
-                 <Menu
-                 id="simple-menu"
-                 anchorEl={anchorEl}
-                 open={Boolean(anchorEl)}
-                 onClose={this.handleClose}
-                    >
-                    {this.props.reduxState.tags.map( tag => (
-                    <MenuItem key={tag.id} value={tag.id} name={tag.name} onClick={this.handleClose}>{tag.name}</MenuItem>
-                    ))}
-                    </Menu>
+        <div className="App2">
+            <header className="App-header">
+                <Router>
+                    <nav>
+                        <p><Link to="/">Project Page</Link></p>
+                    </nav>
+                </Router>
+                <h1>Update Personal Website</h1>
+            </header>
+            <section>
+                        <ResumeUpload/>
+            </section>
+            <div>
+                <section>
+            <Card className="padding">
+                <h1 className="padding">Add a Project</h1>
+                    <form onSubmit={this.projectPostObjPost}>
+                        <Button
+                            aria-owns={anchorEl ? 'simple-menu' : undefined}
+                            aria-haspopup="true"
+                            onClick={this.handleClick}>
+                            Select Tags
+                        </Button>
+                        <Menu
+                            id="simple-menu"
+                            anchorEl={anchorEl}
+                            open={Boolean(anchorEl)}
+                            onClose={this.handleClose}
+                        >
+                        {this.props.reduxState.tags.map( tag => (
+                            <MenuItem 
+                                key={tag.id} 
+                                value={tag.id} 
+                                name={tag.name} 
+                                onClick={this.handleClose}>{tag.name}
+                            </MenuItem>
+                        ))}
+                        </Menu>
                     <br/>
-                      <div>
                     <section>
                     {
                         this.state.projectPostObj.tag_names.map((name, index) => (
                         <Chip key={index} className="margin-left margin-top" label={name} variant="outlined"/>
                     ))}
                     </section>
-                    </div>
                     <section className="margin-right">
                     <TextField id="standard-name" value={this.state.name} label="Name" 
                     onChange={this.handleChangeFor('name')}/>
@@ -159,17 +170,16 @@ class AdminPage extends Component {
                     <section className="margin-right">
                     <TextField id="standard-name" value={this.state.github} label="Github" 
                     onChange={this.handleChangeFor('github')}/>
-                        <br/>
-                    <TextField id="date" label="Date Completed" type="date" defaultValue="2017-05-24"
-                    onChange={this.handleChangeFor('date_completed')}/>
                     </section>
                     <br/>
                     {JSON.stringify(this.state.projectPostObj)}
                     <br/>
                     <button className="btn btn-outline-success btn-md" type="submit">Add Project</button>
                 </form>
-            <hr/>
-             <section>
+                 </Card>
+                 </section>
+                 </div>
+             <section className="padding">
                 <table className = "table table-md">
                     <thead>
                         <tr className="App-title">

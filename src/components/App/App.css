@@ -9,11 +9,20 @@
   border-color: #AE2F2C;
 }
 
+.App2 {
+  font-family: 'Montserrat',
+    sans-serif;
+  text-align: center;
+  border-style: solid;
+  border-width: 4px;
+  border-color: #AE2F2C;
+}
+
 section {
   display: inline-block;
 }
 
-.margin-left{
+.margin-left {
   margin-left: 15px;
 }
 

@@ -61,17 +61,17 @@ class FileUpload extends Component {
 
   render() {
     return (
-        <div>
+        <div className="padding">
             <Card>
                 <CardContent>
-                    <h3>Upload File</h3>
-                        <div>
+                    <h1 className="padding">Upload Resume</h1>
+                        <div className="padding">
                             <TextField 
                             type="file" 
                             value={this.state.selectedFile}
                             onChange={this.handleSelectedFile}
                             />
-                            <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Add to Gallery</Button>
+                            <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Upload</Button>
                         </div>
                 </CardContent>
             </Card>

@@ -107,12 +107,17 @@ class FileUpload extends Component {
                     <h3>Upload File</h3>
                         <div>
                             <TextField 
-                            type="file" 
-                            value={this.state.selectedFile}
-                            onChange={this.handleSelectedFile}
-                            onChange={this.props.handleChangeFor('thumbnail')}
+                                type="file" 
+                                value={this.state.selectedFile}
+                                onChange={this.handleSelectedFile}
+                                onChange={this.props.handleChangeFor('thumbnail')}
                             />
-                            <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Add to Gallery</Button>
+                            <Button 
+                                onClick={this.handleFileUpload} 
+                                color='primary' 
+                                varient='contained'>
+                                Upload
+                            </Button>
                         </div>
                 </CardContent>
             </Card>
