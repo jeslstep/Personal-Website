@@ -91,12 +91,16 @@ section {
 
 .whitetext {
   color: white;
-  margin-top: 10px;
+  margin-top: 30px;
 }
 
-.quotetext {
-  float: left;
+/* used in TechnologiesUsed component */
+.whitetextTech {
+  color: white;
+  margin-bottom: 20px;
 }
+
+
 
 
 

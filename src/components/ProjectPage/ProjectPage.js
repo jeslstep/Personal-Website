@@ -4,8 +4,6 @@ import {HashRouter as Router, Link} from 'react-router-dom';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Button from '@material-ui/core/Button';
 
-
-
 class ProjectPage extends Component {
 
     // run getProjects when page loads
@@ -18,7 +16,7 @@ class ProjectPage extends Component {
         this.props.dispatch({type: 'GET_PROJECTS'});
     }
 
-  // Renders the entire app on the DOM
+    // Renders the entire app on the DOM
     render() {
         return (
             <div className="App">
@@ -50,11 +48,10 @@ class ProjectPage extends Component {
                                 </Router>
                         </section>
                 </header> 
-                <hr/>
             <h1 className="whitetext">Portfolio</h1>
           <ProjectCard />
         </div>
-         );
+        );
     }
 }
 

@@ -7,6 +7,8 @@ import CardMedia from '@material-ui/core/CardMedia';
 import {connect} from 'react-redux';
 import moment from 'moment';
 import Chip from '@material-ui/core/Chip';
+import TechnologiesUsed from '../TechnologiesUsed/TechnologiesUsed';
+
 
 class ProjectCard extends Component {
 
@@ -42,6 +44,7 @@ class ProjectCard extends Component {
           </Card>
           </section>
         ))}
+        <TechnologiesUsed/>
     </div>
   );
 
