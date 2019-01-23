@@ -18,20 +18,24 @@ class ProjectCard extends Component {
           <section key={project.id}>
           <Card className="card">
               <CardMedia
-                component="img"
+                component= "img"
+                height = "300"
+                width= "550"
                 alt= {project.description}
-                height="auto"
-                max-width= "250"
                 src = {project.thumbnail}
                 title={project.name}
               />
               <CardContent>
                 <h2 id="giveMargin">{project.name}</h2>
-                <p>{project.description}</p>
+                <div >
+                <p className="divforcard">{project.description}</p>
+                </div>
               </CardContent>
-            <CardActions>
+            <CardActions className="divforcard2">
+             
               <a target="_blank" rel="noopener noreferrer" href={project.website}>Website</a>
               <a target="_blank" rel="noopener noreferrer" href={project.github}> Github</a>
+             
             </CardActions>
           </Card>
           </section>

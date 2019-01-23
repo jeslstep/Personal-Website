@@ -23,7 +23,7 @@ pool.on("error", (err) => {
 
 // GET Route to get projects 
 router.get('/', (req, res) => {
-    let sqlText = `SELECT * FROM "projects" ORDER BY "id" DESC;`;
+    let sqlText = `SELECT * FROM "projects" ORDER BY "id";`;
     pool.query(sqlText)
         .then((result) => {
             res.send(result.rows);
