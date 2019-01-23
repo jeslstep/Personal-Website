@@ -20,11 +20,11 @@ class ProjectPage extends Component {
     render() {
         return (
             <div className="App">
-                <Router>
+                {/* <Router>
                     <nav>
                         <p><Link to="/adminpage">Admin Page</Link></p>
                     </nav>
-                </Router>
+                </Router> */}
                 <header className="App-header">
                         <section>
                             <img id="image" alt = "Jessica Stephens"

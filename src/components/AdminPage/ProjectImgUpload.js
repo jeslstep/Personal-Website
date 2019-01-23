@@ -4,6 +4,8 @@ import {storage} from '../../firebase/config';
 import TextField from '@material-ui/core/TextField';
 import swal from 'sweetalert';
 import Button from '@material-ui/core/Button';
+import Card from '@material-ui/core/Card';
+import { CardContent } from '@material-ui/core';
 
 class ProjectImgUpload extends Component {
 
@@ -104,46 +106,50 @@ class ProjectImgUpload extends Component {
 render() {
     return (
         <div>
-             <h1 className="padding">Add a Project</h1>
-                        <div>
-                            <TextField 
-                                type="file" 
-                                onChange={this.handleSelectedFile}
-                            />
-                        </div>
-                        <br/>
-                         <div>
-                                    <TextField 
-                                        id="standard-name" 
-                                        value={this.state.projectPostObj.name} 
-                                        label="Name" 
-                                        onChange={this.handleChangeFor('name')}
-                                    />
-                                     <br/>
-                                    <TextField 
-                                        id="standard-name" 
-                                        value={this.state.projectPostObj.description} 
-                                        label="Description" 
-                                        onChange={this.handleChangeFor('description')}
-                                    />
-                                     <br/>
-                                    <TextField 
-                                        id="standard-name" 
-                                        value={this.state.projectPostObj.website} 
-                                        label="Website" 
-                                        onChange={this.handleChangeFor('website')}
-                                    />
-                                     <br/>
-                                    <TextField 
-                                        id="standard-name" 
-                                        value={this.state.projectPostObj.github} 
-                                        label="Github" 
-                                        onChange={this.handleChangeFor('github')}
-                                    />
+            <Card>
+                <CardContent>
+                    <h1 className="padding">Add a Project</h1>
+                    <div>
+                        <TextField 
+                            type="file" 
+                            onChange={this.handleSelectedFile}
+                        />
+                    </div>
                     <br/>
-                    <Button varient="contained" color="primary" onClick={this.handleFileUpload} >Add Project</Button>
-                </div>
-        </div>
+                    <div>
+                        <TextField 
+                            id="standard-name" 
+                            value={this.state.projectPostObj.name} 
+                            label="Name" 
+                            onChange={this.handleChangeFor('name')}
+                        />
+                        <br/>
+                        <TextField 
+                            id="standard-name" 
+                            value={this.state.projectPostObj.description} 
+                            label="Description" 
+                            onChange={this.handleChangeFor('description')}
+                        />
+                        <br/>
+                        <TextField 
+                            id="standard-name" 
+                            value={this.state.projectPostObj.website} 
+                            label="Website" 
+                            onChange={this.handleChangeFor('website')}
+                        />
+                        <br/>
+                        <TextField 
+                            id="standard-name" 
+                            value={this.state.projectPostObj.github} 
+                            label="Github" 
+                            onChange={this.handleChangeFor('github')}
+                        />
+                        <br/>
+                        <Button varient="contained" color="primary" onClick={this.handleFileUpload} >Add Project</Button>
+                    </div>
+            </CardContent>
+        </Card>
+    </div>
     );
   }
 }

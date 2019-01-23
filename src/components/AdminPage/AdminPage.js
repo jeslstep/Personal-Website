@@ -32,20 +32,19 @@ class AdminPage extends Component {
                     <h1>Update Personal Website</h1>
                 </header>
                 <div>
-                    <Card className="card">
+                    <section>
+                  
                     <ResumeUpload/>
-                    </Card>
-                </div>
-                <div>
-                    <Card className="card">
+           
+                    </section>
+                    <section>
+                 
                     <ProjectImgUpload />
-                    </Card>
+                 
+                    </section>
                 </div>
-                <div>
-                    <Card className="card">
-                        <ProjectsTable />
-                    </Card>
-               </div>
+                    <ProjectsTable />
+                   
             </div>
         );
     }
