@@ -28,7 +28,6 @@ router.get('/', (req, res) => {
         .then((result) => {
             res.send(result.rows);
             console.log(result.rows);
-            
         })
         .catch((error) => {
             console.log('error', error);
@@ -36,23 +35,8 @@ router.get('/', (req, res) => {
         })
 }); 
 
-// GET Route to get a projects tags by project id
-router.get('/projecttags/:id', (req, res) => {
-    let project_id = req.params.id;
-    console.log('GET request for id', project_id);
-    let sqlText = `SELECT * FROM "project_tags" WHERE project_id = $1 ORDER BY "tag_name" DESC;`;
-    pool.query(sqlText, [project_id])
-        .then((result) => {
-            res.send(result.rows);
-            console.log(result.rows);
-        })
-        .catch((error) => {
-            console.log('error', error);
-            res.sendStatus(500);
-        })
-});
 
-// GET Route to get tags for menu 
+// GET Route to get tags for technologies used 
 router.get('/tags', (req, res) => {
     let sqlText = `SELECT * FROM "tags" ORDER BY "id" DESC;`;
     pool.query(sqlText)
@@ -71,20 +55,13 @@ router.get('/tags', (req, res) => {
 router.post('/', (req, res) => {
     let projects = req.body;
     console.log(projects);
-    let sqlText = `INSERT INTO projects (name, description, thumbnail, website, github, date_completed)
-    VALUES ($1, $2, $3, $4, $5, $6) RETURNING id;`
-    pool.query(sqlText, [projects.name, projects.thumbnail, projects.description, projects.website,
-        projects.github, projects.date_completed])
+    let sqlText = `INSERT INTO projects (name, description, thumbnail , website, github)
+    VALUES ($1, $2, $3, $4, $5);`
+    pool.query(sqlText, [projects.name, projects.description, projects.thumbnail, projects.website,
+        projects.github])
         .then((result) => {
             console.log(result);
-            let project_id = result; 
-            for (let tag_name of projects.tag_name) {
-                let sqlText2 = `INSERT INTO project_tags (project_id, tag_name)
-                VALUES ( $1, $2 );`
-                pool.query(sqlText2, [project_id, tag_name])
-                console.log(result);
-                res.send(projects);
-            }
+            res.send(projects);
         })
         .catch((error) => {
             console.log(error);
@@ -101,10 +78,7 @@ router.delete('/delete/:id', (req, res) => {
     console.log(sqlText);
     pool.query(sqlText, [reqId])
         .then((result) => {
-            let sqlText2 = `DELETE FROM project_tags WHERE id=$1;`;
-            console.log(sqlText2);
-            pool.query(sqlText2, [reqId])
-            console.log('tags deleted');
+            console.log(result);
             res.sendStatus(200);
         })
         .catch((error) => {

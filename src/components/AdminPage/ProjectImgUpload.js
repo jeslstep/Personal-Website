@@ -1,22 +1,22 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 import {storage} from '../../firebase/config';
-import axios from 'axios';
 import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import swal from 'sweetalert';
+import Button from '@material-ui/core/Button';
 
-class FileUpload extends Component {
+class ProjectImgUpload extends Component {
 
     // state to store selected file
     state ={
         selectedFile: '',
-        newGalleryEntry: {
-            picture_path: '',
-            likes: 0,
-            picture_description: '',
-        }
+        projectPostObj: { 
+              name: '',
+              description: '',
+              thumbnail: '',
+              website: '',
+              github: '',
+          }
     }
 
     // get file from input
@@ -49,81 +49,108 @@ class FileUpload extends Component {
                 swal("File successfully uploaded!", "success");
                 // Sets local state to include the new file URL
                 this.setState({
-                     newGalleryEntry: {
-                        ...this.state.newGalleryEntry,
-                        picture_path: thisUrl
-                    }
-                });
+                     projectPostObj: {
+                        ...this.state.projectPostObjPost,
+                            name: this.state.projectPostObj.name,
+                            description: this.state.projectPostObj.description,
+                            thumbnail: thisUrl,
+                            website: this.state.projectPostObj.website,
+                            github: this.state.projectPostObj.github,
+                     }
+                    });
                 })
                 .then((result) => {
-                console.log('result', result);
-                this.addPicture();
+                    console.log('result', result);
+                    this.projectPostObjPost();
                 })
                 .catch((error) => {
                 console.log('Error with uploadFile function after complete', error);
                 });
-            } // end (complete)
-      ) // end uploadTask.on
+            } 
+      ) 
     }
 
-    // set user input in state  
-    handleChangeFor = (propertyName) => {
-        return (event) => {
-            this.setState({
-                newGalleryEntry: {
-                    ...this.state.newGalleryEntry,
-                    [propertyName]: event.target.value
-                }
-            });
-        }
-    }
+       // sets the user input in state
+       handleChangeFor = (propertyName) => {
+           return (event) => {
+               this.setState({
+                   projectPostObj: { 
+                       ...this.state.projectPostObj,
+                       [propertyName]: event.target.value
+                   }
+               });
+           }
+       }
 
-    // add a picture and description 
-    addPicture = (event) => {
-        axios({
-        method: 'POST',
-        url: '/gallery',
-        data: this.state.newGalleryEntry
-        }).then(response => {
-        this.props.getGallery();
-        this.setState({
-            selectedFile: '',
-            newGalleryEntry: {
-                picture_path: '',
-                picture_description: '',
-                likes: 0,
-            }
-        })
-        }).catch(error => {
-        alert('Error', error);
-        })
-    }
+       // post projectPostObj
+       projectPostObjPost = (event) => {
+           console.log('adding project', this.state.projectPostObj);
+           this.props.dispatch({
+               type: 'ADD_PROJECT',
+               payload: this.state.projectPostObj
+           });
+           this.setState({
+               selectedFile: '',
+               projectPostObj: { ...this.state.projectPostObj,
+                    thumbnail: '',
+                    name: '',
+                    description: '',
+                    website: '',
+                    github: '',
+               }
+           });
+       }
 
-  render() {
+render() {
     return (
         <div>
-            <Card>
-                <CardContent>
-                    <h3>Upload File</h3>
+             <h1 className="padding">Add a Project</h1>
                         <div>
                             <TextField 
                                 type="file" 
-                                value={this.state.selectedFile}
                                 onChange={this.handleSelectedFile}
-                                onChange={this.props.handleChangeFor('thumbnail')}
                             />
-                            <Button 
-                                onClick={this.handleFileUpload} 
-                                color='primary' 
-                                varient='contained'>
-                                Upload
-                            </Button>
                         </div>
-                </CardContent>
-            </Card>
+                        <br/>
+                         <div>
+                                    <TextField 
+                                        id="standard-name" 
+                                        value={this.state.projectPostObj.name} 
+                                        label="Name" 
+                                        onChange={this.handleChangeFor('name')}
+                                    />
+                                     <br/>
+                                    <TextField 
+                                        id="standard-name" 
+                                        value={this.state.projectPostObj.description} 
+                                        label="Description" 
+                                        onChange={this.handleChangeFor('description')}
+                                    />
+                                     <br/>
+                                    <TextField 
+                                        id="standard-name" 
+                                        value={this.state.projectPostObj.website} 
+                                        label="Website" 
+                                        onChange={this.handleChangeFor('website')}
+                                    />
+                                     <br/>
+                                    <TextField 
+                                        id="standard-name" 
+                                        value={this.state.projectPostObj.github} 
+                                        label="Github" 
+                                        onChange={this.handleChangeFor('github')}
+                                    />
+                    <br/>
+                    <Button varient="contained" color="primary" onClick={this.handleFileUpload} >Add Project</Button>
+                </div>
         </div>
     );
   }
 }
 
-export default FileUpload;
+const mapReduxStateToProps = (reduxState) => ({
+    reduxState
+});
+
+
+export default connect(mapReduxStateToProps)(ProjectImgUpload)

@@ -71,6 +71,7 @@ class FileUpload extends Component {
                             value={this.state.selectedFile}
                             onChange={this.handleSelectedFile}
                             />
+                            <br/>
                             <Button onClick={this.handleFileUpload} color='primary' varient='contained'>Upload</Button>
                         </div>
                 </CardContent>
