@@ -1,25 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const pg = require('pg');
+const pool = require('../modules/pool');
 
-// DO NOT MODIFY THIS FILE FOR BASE MODE
-// DB CONNECTION
-const config = {
-    database: 'portfolio',
-    host: 'localhost',
-    port: 5432,
-    max: 10,
-    idleTimeoutMillis: 30000
-};
-const pool = new pg.Pool(config);
 
-pool.on("connect", () => {
-    console.log('connected');
-});
-
-pool.on("error", (err) => {
-    console.log('not connected', err);
-});
 
 // GET Route to get projects 
 router.get('/', (req, res) => {
