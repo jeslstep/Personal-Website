@@ -34,6 +34,22 @@ router.get('/tags', (req, res) => {
         })
 }); 
 
+// POST Route to get tags for technologies used 
+router.post('/post/tags', (req, res) => {
+    let sqlText = `INSERT INTO tags (name)
+    VALUES ($1); ORDER BY "id" DESC;`;
+    pool.query(sqlText)
+        .then((result) => {
+            res.send(result.rows);
+            console.log(result.rows);
+
+        })
+        .catch((error) => {
+            console.log('error', error);
+            res.sendStatus(500);
+        })
+});
+
 // POST to projects and project_tags tables
 router.post('/', (req, res) => {
     let projects = req.body;

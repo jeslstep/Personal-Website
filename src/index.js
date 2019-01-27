@@ -61,11 +61,27 @@ function* addProjectsSaga (action) {
     }
 }
 
+// saga to send project information to server
+function* addTagsSaga(action) {
+    console.log('in second saga');
+    // standred js way to handle errors
+    try {
+        yield call(axios.post, '/projects/post/tags', action.payload);
+        // get newly added tags
+        yield put({
+            type: 'GET_TAGS'
+        });
+    } catch (error) {
+        console.log('error with element post request', error);
+    }
+}
+
 // Create the rootSaga generator function
 function* rootSaga() {
      yield takeEvery('GET_PROJECTS', getProjectsSaga);
-     yield takeEvery('GET_TAGS', getTagsSaga)
-     yield takeEvery('DELETE_PROJECT', deleteProjectSaga)
+     yield takeEvery('GET_TAGS', getTagsSaga);
+     yield takeEvery('ADD_TAGS', addTagsSaga);
+     yield takeEvery('DELETE_PROJECT', deleteProjectSaga);
      yield takeEvery('ADD_PROJECT', addProjectsSaga);
 }
 
