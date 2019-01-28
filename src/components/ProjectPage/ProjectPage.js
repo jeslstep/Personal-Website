@@ -52,14 +52,15 @@ class ProjectPage extends Component {
                                     <section>
                                         {/* display resume link from reduxstate */}
                                          {this.props.reduxState.resume.map( resume =>(
-                                        <Button 
-                                            key={resume.id}
-                                            color= "secondary" 
-                                            varient="contained">
-                                                <a  target="_blank" rel="noopener noreferrer" href={resume.firebase_link}> 
-                                                    Resume
-                                                </a>
-                                        </Button>
+                                            <div key={resume.firebase_link}>
+                                                <Button 
+                                                    color= "secondary" 
+                                                    varient="contained">
+                                                        <a  target="_blank" rel="noopener noreferrer" href={resume.firebase_link}> 
+                                                            Resume
+                                                        </a>
+                                                </Button>
+                                            </div>
                                            ))}
                                     </section>
                                     </div>
