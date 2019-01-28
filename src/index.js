@@ -77,9 +77,9 @@ function* addProjectsSaga (action) {
 // saga to send new tech tag information to server
 function* addTagsSaga(action) {
     console.log('in addTagsSaga, adding a new tech tag:', action.payload);
-  
+    let name = [action.payload];
     try {
-        yield call(axios.post, '/tags', action.payload);
+        yield call(axios.post, '/tags', name);
         // get newly added tags
         yield put({ type: 'GET_TAGS' });
     } catch (error) {

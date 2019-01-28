@@ -20,10 +20,10 @@ router.get('/', (req, res) => {
 
 // POST Route to add tags for technologies used to the databse
 router.post('/', (req, res) => {
-    let tagName = req.params.id;
-    console.log('posting new tech tag:', tagName);
+    let tagName = req.body
+    console.log('posting new tech tag:', tagName[0]);
     let sqlText = `INSERT INTO tags (name) VALUES ($1);`;
-    pool.query(sqlText, [tagName])
+    pool.query(sqlText, [tagName[0]])
         .then((result) => {
             res.send(result.rows);
             console.log(result.rows);
