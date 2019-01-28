@@ -13,8 +13,6 @@ class ProjectCard extends Component {
     componentDidMount() {
       // run get getProjects
       this.getProject();
-      // run getResume
-      // this.getResume();
     }
 
      // getProject dispatches a call to getProjectsSaga

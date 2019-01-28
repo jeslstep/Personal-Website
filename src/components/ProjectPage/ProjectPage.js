@@ -10,12 +10,21 @@ class ProjectPage extends Component {
     componentDidMount() {
         // run getResume
         this.getResume();
+        // run get getProjects
+        this.getProject();
     }
 
     // getResume dispatches a call to getResumeSaga
-     getResume = (event) => {
+    getResume = (event) => {
         this.props.dispatch({type: 'GET_RESUME'});
     }
+
+    // getProject dispatches a call to getProjectsSaga
+    getProject = (event) => {
+       this.props.dispatch({
+         type: 'GET_PROJECTS'
+       });
+     }
 
     // Renders the entire app on the DOM
     render() {
