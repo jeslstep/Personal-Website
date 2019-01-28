@@ -101,13 +101,12 @@ section {
 }
 
 .divforcard {
-  height: 100px;
+  min-height: 100px;
   max-width: 450px;
 }
 
 .divforcard2 {
   margin-top: 20px;
-  height: 100px;
 }
 
 .card2{
@@ -115,5 +114,11 @@ section {
   margin: 15px;
 }
 
+.a {
+  color: red;
+}
 
+.b {
+  color: black;
+}
 
