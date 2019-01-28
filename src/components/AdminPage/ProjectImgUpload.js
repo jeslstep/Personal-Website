@@ -63,6 +63,7 @@ class ProjectImgUpload extends Component {
                 })
                 .then((result) => {
                     console.log('result', result);
+                    // run projectPostObjPost to send projectPostObj
                     this.projectPostObjPost();
                 })
                 .catch((error) => {

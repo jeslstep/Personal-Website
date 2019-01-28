@@ -9,6 +9,21 @@ import TechnologiesUsed from '../TechnologiesUsed/TechnologiesUsed';
 
 class ProjectCard extends Component {
 
+    // run these when page loads
+    componentDidMount() {
+      // run get getProjects
+      this.getProject();
+      // run getResume
+      // this.getResume();
+    }
+
+     // getProject dispatches a call to getProjectsSaga
+     getProject = (event) => {
+       this.props.dispatch({
+         type: 'GET_PROJECTS'
+       });
+     }
+
 
 
   render (){

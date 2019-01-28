@@ -1,48 +1,66 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
-import {HashRouter as Router, Link} from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Button from '@material-ui/core/Button';
 
 class ProjectPage extends Component {
 
-    // run getProjects when page loads
+    // run these when page loads
     componentDidMount() {
-         this.getProject();
+        // run getResume
+        this.getResume();
     }
 
-    // getProject dispatches a call to get projects 
-     getProject = (event) => {
-        this.props.dispatch({type: 'GET_PROJECTS'});
+    // getResume dispatches a call to getResumeSaga
+     getResume = (event) => {
+        this.props.dispatch({type: 'GET_RESUME'});
     }
 
     // Renders the entire app on the DOM
     render() {
         return (
             <div className="App">
-                {/* <Router>
-                    <nav>
-                        <p><Link to="/adminpage">Admin Page</Link></p>
-                    </nav>
-                </Router> */}
                 <header className="App-header">
                         <section>
-                            <img id="image" alt = "Jessica Stephens"
+                            <img id="image" alt= "Jessica Stephens"
                             src = "https://avatars2.githubusercontent.com/u/40326640?s=460&v=4"/>
                                 <div className="padding">
-                                <h4 >Jessica Stephens</h4>
+                                <h4>Jessica Stephens</h4>
                                 <h4>Software Developer</h4>
                                 </div>
                                 <Router>
                                     <div>
                                     <section>
-                                        <Button color= "secondary" varient="contained"><a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">LinkedIn</a></Button>
+                                        <Button 
+                                            color= "secondary" 
+                                            varient="contained">
+                                                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">
+                                                    LinkedIn
+                                                </a>
+                                         </Button>
                                     </section>   
                                     <section>
-                                        <Button color= "secondary" varient="contained"><a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep"> Github</a></Button>
+                                        <Button 
+                                            color= "secondary" 
+                                            varient="contained">
+                                                <a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep">
+                                                    Github
+                                                </a>
+                                        </Button>
                                     </section>
                                     <section>
-                                        <Button color= "secondary" varient="contained"><a  target="_blank" rel="noopener noreferrer" href="https://firebasestorage.googleapis.com/v0/b/personal-website-93452.appspot.com/o/jessica_stephens_resume.pdf?alt=media&token=94ed00ef-b479-4eed-8135-edd16335db14"> Resume</a></Button>
+                                        {/* display resume link from reduxstate */}
+                                         {this.props.reduxState.resume.map( resume =>(
+                                        <Button 
+                                            key={resume.id}
+                                            color= "secondary" 
+                                            varient="contained">
+                                                <a  target="_blank" rel="noopener noreferrer" href={resume.firebase_link}> 
+                                                    Resume
+                                                </a>
+                                        </Button>
+                                           ))}
                                     </section>
                                     </div>
                                 </Router>

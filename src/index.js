@@ -14,63 +14,87 @@ import axios from 'axios';
 
 // saga to get projects from server
 function* getProjectsSaga (action) {
-    console.log('in getProjectsSaga', action.payload);
+    console.log('in getProjectsSaga');
     try {
-        const response = yield call (axios.get, '/projects', {projects: action.payload});
-        yield put( { type: 'SET_PROJECTS', payload: response.data} );
+        const response = yield call (axios.get, '/projects');
+        yield put({ type: 'SET_PROJECTS', payload: response.data });
     }
     catch(error) {
-        console.log('error with get request', error);
+        console.log('error in getProjectsSaga with get request', error);
     }
 }
 
 // saga to get tags from server
 function* getTagsSaga (action) {
-    console.log('in getTagsSaga', action.payload);
+    console.log('in getTagsSaga');
     try {
-        const response = yield call (axios.get, '/projects/tags', {projects: action.payload});
-        yield put( { type: 'SET_TAGS', payload: response.data} );
+        const response = yield call (axios.get, '/tags');
+        yield put({ type: 'SET_TAGS', payload: response.data });
     }
     catch(error) {
-        console.log('error with get request', error);
+        console.log('error in getTagsSaga with get request', error);
+    }
+}
+
+// saga to get resume firebase_link from server
+function* getResumeSaga (action) {
+    console.log('in getResumeSaga');
+    try {
+        const response = yield call (axios.get, '/resume');
+        yield put({ type: 'SET_RESUME', payload: response.data });
+    }
+    catch(error) {
+        console.log('error in getResumeSaga with get request', error);
     }
 }
 
 // saga to deletes projects from server
 function* deleteProjectSaga (action) {
-    console.log('in projectsSaga', action.payload);
+    console.log('in deleteProjectSaga, deleting project id:', action.payload);
     const projectid = action.payload
     try {
-        yield call(axios.delete, `/projects/delete/${projectid}` );
-        yield put( { type: 'GET_PROJECTS' } );
+        yield call( axios.delete, `/projects/delete/${projectid}` );
+        // get projects after deleting 
+        yield put({ type: 'GET_PROJECTS' });
     }
     catch(error) {
-        console.log('error with get request', error);
+        console.log('error in deleteProjectSaga with delete request', error);
     }
 }
 
 // saga to send project information to server
 function* addProjectsSaga (action) {
-    console.log('in second saga');
-    // standred js way to handle errors
+    console.log('in addProjectsSaga, adding project:', action.payload);
     try {
         yield call(axios.post, '/projects', action.payload);
-        yield put({type: 'GET_PROJECTS'});
+        // get newly added projects
+        yield put({ type: 'GET_PROJECTS' });
     } catch (error) {
-        console.log('error with element post request', error);
+        console.log('error in addProjectsSaga with element post request', error);
     }
 }
 
-// saga to send project information to server
+// saga to send new tech tag information to server
 function* addTagsSaga(action) {
-    console.log('in second saga');
-    // standred js way to handle errors
+    console.log('in addTagsSaga, adding a new tech tag:', action.payload);
+  
     try {
-        yield call(axios.post, '/projects/post/tags', action.payload);
+        yield call(axios.post, '/tags', action.payload);
         // get newly added tags
-        yield put({
-            type: 'GET_TAGS'
-        });
+        yield put({ type: 'GET_TAGS' });
+    } catch (error) {
+        console.log('error in addTagsSaga with element post request', error);
+    }
+}
+
+// addResumeSaga to send resume firebase_link to server
+function* addResumeSaga(action) {
+     console.log('in addResumeSaga, sending firebase_link:', action.payload);
+       let link = [action.payload];
+    try {
+        yield call(axios.post, '/resume', link);
+        // get newly added tags
+        yield put({ type: 'GET_RESUME' });
     } catch (error) {
         console.log('error with element post request', error);
     }
@@ -80,7 +104,9 @@ function* addTagsSaga(action) {
 function* rootSaga() {
      yield takeEvery('GET_PROJECTS', getProjectsSaga);
      yield takeEvery('GET_TAGS', getTagsSaga);
+     yield takeEvery('GET_RESUME', getResumeSaga);
      yield takeEvery('ADD_TAGS', addTagsSaga);
+     yield takeEvery('ADD_RESUME', addResumeSaga);
      yield takeEvery('DELETE_PROJECT', deleteProjectSaga);
      yield takeEvery('ADD_PROJECT', addProjectsSaga);
 }
@@ -98,8 +124,19 @@ const projects = (state = [], action) => {
     }
 }
 
+// Used to store resume firebase_link returned from the server
+const resume = (state = [], action) => {
+    switch (action.type) {
+        case 'SET_RESUME':
+            return action.payload;
+        default:
+            return state;
+    }
+}
 
-// Used to store the project tags (e.g. 'React', 'jQuery', 'Angular', 'Node.js')
+
+// Used to store the project tags from database 
+// (e.g. 'React', 'jQuery', 'Angular', 'Node.js') from the server
 const tags = (state = [], action) => {
     switch (action.type) {
         case 'SET_TAGS':
@@ -113,6 +150,7 @@ const tags = (state = [], action) => {
 const storeInstance = createStore(
     combineReducers({
         projects,
+        resume,
         tags,
     }),
     // Add sagaMiddleware to our store

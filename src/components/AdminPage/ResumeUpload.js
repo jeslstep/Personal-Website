@@ -5,10 +5,11 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import swal from 'sweetalert';
+import {connect} from 'react-redux';
 
-class FileUpload extends Component {
+class ResumeUpload extends Component {
 
-    // state to store selected file
+    // state to store selected resume file
     state ={
         selectedFile: '',
         selectedFileUrl: ''
@@ -22,13 +23,13 @@ class FileUpload extends Component {
         })
     }
 
-    // send file to firebase storage and return url for database
+    // send resume file to firebase storage and return url for database
     handleFileUpload = () => {
        if (this.state.selectedFile === null) {
          swal("Please select a file locally from your computer!", "warning");
          return
       }
-      // creates the URL that the file will be stored at on FireBase
+      // creates the URL that the resume file will be stored at on FireBase
       const uploadTask = storage.ref(`resume_file/${this.state.selectedFile.name}`).put(this.state.selectedFile);
       uploadTask.on('state_changed',
          (snapshot) => {
@@ -42,15 +43,15 @@ class FileUpload extends Component {
                 // responds back with the complete URL as "thisUrl"
                 storage.ref(`resume_file`).child(this.state.selectedFile.name).getDownloadURL().then(thisUrl => {
                 swal("File successfully uploaded!", "success");
-                // Sets local state to include the new file URL
+                // Sets local state to include the resuem file URL
                 this.setState({
                      selectedFileUrl: thisUrl
-                    
                 });
                 })
                 .then((result) => {
                 console.log('result', result);
-                this.addPicture();
+                // add resume
+                this.resumePostObj();
                 })
                 .catch((error) => {
                 console.log('Error with uploadFile function after complete', error);
@@ -58,6 +59,18 @@ class FileUpload extends Component {
         } 
       ) 
     }
+
+  // post projectPostObj
+  resumePostObj = (event) => {
+      console.log('in resumePostObj, adding resume', this.state.selectedFileUrl);
+      this.props.dispatch({
+          type: 'ADD_RESUME',
+          payload: this.state.selectedFileUrl
+      });
+      this.setState({
+          selectedFileUrl: '',
+      });
+  }
 
   render() {
     return (
@@ -68,7 +81,6 @@ class FileUpload extends Component {
                         <div className="padding">
                             <TextField 
                             type="file" 
-                            value={this.state.selectedFile}
                             onChange={this.handleSelectedFile}
                             />
                             <br/>
@@ -81,4 +93,5 @@ class FileUpload extends Component {
   }
 }
 
-export default FileUpload;
+
+export default connect()(ResumeUpload);

@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 
 
-// GET Route to get projects 
+// GET Route to get projects from database
 router.get('/', (req, res) => {
     let sqlText = `SELECT * FROM "projects" ORDER BY "id";`;
     pool.query(sqlText)
@@ -18,39 +18,7 @@ router.get('/', (req, res) => {
         })
 }); 
 
-
-// GET Route to get tags for technologies used 
-router.get('/tags', (req, res) => {
-    let sqlText = `SELECT * FROM "tags" ORDER BY "id" DESC;`;
-    pool.query(sqlText)
-        .then((result) => {
-            res.send(result.rows);
-            console.log(result.rows);
-
-        })
-        .catch((error) => {
-            console.log('error', error);
-            res.sendStatus(500);
-        })
-}); 
-
-// POST Route to get tags for technologies used 
-router.post('/post/tags', (req, res) => {
-    let sqlText = `INSERT INTO tags (name)
-    VALUES ($1); ORDER BY "id" DESC;`;
-    pool.query(sqlText)
-        .then((result) => {
-            res.send(result.rows);
-            console.log(result.rows);
-
-        })
-        .catch((error) => {
-            console.log('error', error);
-            res.sendStatus(500);
-        })
-});
-
-// POST to projects and project_tags tables
+// POST project to the database
 router.post('/', (req, res) => {
     let projects = req.body;
     console.log(projects);
@@ -69,12 +37,11 @@ router.post('/', (req, res) => {
 })
 
 
-// DELETE project and its tags 
+// DELETE project from the database 
 router.delete('/delete/:id', (req, res) => {
     let reqId = req.params.id;
     console.log('Delete request for id', reqId);
     let sqlText = `DELETE FROM projects WHERE id=$1;`;
-    console.log(sqlText);
     pool.query(sqlText, [reqId])
         .then((result) => {
             console.log(result);
@@ -86,4 +53,7 @@ router.delete('/delete/:id', (req, res) => {
         })
 })
 
+// UPDATE projects in the database
+
+// TO BE ADDED
 module.exports = router;

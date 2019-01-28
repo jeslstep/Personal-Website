@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import ProjectsTable from './ProjectsTable';
 import ProjectImgUpload from './ProjectImgUpload';
 import Card from '@material-ui/core/Card';
+import Button from '@material-ui/core/Button';
 
 class AdminPage extends Component {
 
@@ -72,6 +73,8 @@ class AdminPage extends Component {
                             label="Name" 
                             onChange={this.handleChangeFor('tag_name')}
                         />
+                        <br/>
+                        <Button onClick={this.tagPostObjPost} color='primary' varient='contained'>Add New Tech Tag</Button>
                         </Card>
                         </section>
                 </div>
