@@ -24,9 +24,9 @@ class TechnologiesUsed extends Component {
 
   render (){
   return (
-    <div className="padding">
+    <div className="App">
         <div align="center">
-            <h1 className="mainPageTitles">Technologies Used</h1>
+            <h1 className="mainPageTitles">Technology Used</h1>
         </div>
         <div className="padding">
             {this.props.reduxState.tags.map( tag => (

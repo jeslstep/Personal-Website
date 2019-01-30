@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import { HashRouter as Router } from 'react-router-dom';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Button from '@material-ui/core/Button';
+import TechnologiesUsed from '../TechnologiesUsed/TechnologiesUsed';
 
 class ProjectPage extends Component {
 
@@ -47,7 +48,8 @@ class ProjectPage extends Component {
                                                     LinkedIn
                                                 </a>
                                          </Button>
-                                    </section>   
+                                    </section>
+                                    <section> <a className="b">|</a></section> 
                                     <section>
                                         <Button
                                             varient="contained">
@@ -56,6 +58,7 @@ class ProjectPage extends Component {
                                                 </a>
                                         </Button>
                                     </section>
+                                    <section> <a className="b">|</a></section> 
                                     <section>
                                         {/* display resume link from reduxstate */}
                                          {this.props.reduxState.resume.map( resume =>(
@@ -78,6 +81,7 @@ class ProjectPage extends Component {
                     <h1 className="mainPageTitles">Portfolio</h1>
                 </div>
           <ProjectCard />
+          <TechnologiesUsed/>
         </div>
         );
     }
