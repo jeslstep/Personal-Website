@@ -56,6 +56,10 @@ section {
   width: 50%;
 }
 
+.padding {
+  padding: 20px;
+}
+
 /* ProjectCards */
 .card {
   margin: 25px;
@@ -98,12 +102,5 @@ section {
 }
 
 
-.marginBottom{
-  margin-bottom: 10px;
-}
-
-.padding {
-    padding: 20px;
-}
 
 

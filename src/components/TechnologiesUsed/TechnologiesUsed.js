@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Chip from '@material-ui/core/Chip';
+import Contact from '../Contact/Contact';
+
+const style = {
+    color:'#AE2F2C',
+    borderColor: '#AE2F2C'
+};
 
 class TechnologiesUsed extends Component {
 
@@ -22,10 +28,12 @@ class TechnologiesUsed extends Component {
         <div align="center">
             <h1 className="mainPageTitles">Technologies Used</h1>
         </div>
+        <div className="padding">
             {this.props.reduxState.tags.map( tag => (
-                <Chip key={tag.id} className="margin-right" color="#AE2F2C" label={tag.name} variant="outlined"/>
+                <Chip style={style} key={tag.id} className="margin-right" label={tag.name} variant="outlined"/>
             ))}
-       
+       </div>
+       <Contact />
     </div>
   );
 
