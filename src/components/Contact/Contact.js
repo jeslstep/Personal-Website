@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Chip from '@material-ui/core/Chip';
 
-class TechnologiesUsed extends Component {
+class Contact extends Component {
 
      // Renders the entire app on the DOM
      componentDidMount() {
@@ -19,9 +19,7 @@ class TechnologiesUsed extends Component {
   render (){
   return (
     <div className="padding">
-        <div align="center">
-            <h1 className="mainPageTitles">Technologies Used</h1>
-        </div>
+       <h1 className="whitetextTech">Technologies Used</h1>
             {this.props.reduxState.tags.map( tag => (
                 <Chip key={tag.id} className="margin-right" color="#AE2F2C" label={tag.name} variant="outlined"/>
             ))}
@@ -37,4 +35,4 @@ const mapReduxStateToProps = (reduxState) => ({
   reduxState
 });
 
-export default connect(mapReduxStateToProps)(TechnologiesUsed);
+export default connect(mapReduxStateToProps)(Contact);

@@ -35,25 +35,23 @@ class ProjectPage extends Component {
                             <img id="image" alt= "Jessica Stephens"
                             src = "https://avatars2.githubusercontent.com/u/40326640?s=460&v=4"/>
                                 <div className="padding">
-                                <h4>Jessica Stephens</h4>
-                                <h4>Software Developer</h4>
+                                <h1><strong>Jessica <br/> Stephens</strong></h1>
+                                <h6 className="developerTitle">Software Developer</h6>
                                 </div>
                                 <Router>
                                     <div>
                                     <section>
                                         <Button 
-                                            color= "secondary" 
                                             varient="contained">
-                                                <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">
+                                                <a className="a" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">
                                                     LinkedIn
                                                 </a>
                                          </Button>
                                     </section>   
                                     <section>
-                                        <Button 
-                                            color= "secondary" 
+                                        <Button
                                             varient="contained">
-                                                <a  target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep">
+                                                <a className="a" target="_blank" rel="noopener noreferrer" href="https://www.github.com/jeslstep">
                                                     Github
                                                 </a>
                                         </Button>
@@ -65,7 +63,7 @@ class ProjectPage extends Component {
                                                 <Button 
                                                     color= "secondary" 
                                                     varient="contained">
-                                                        <a  target="_blank" rel="noopener noreferrer" href={resume.firebase_link}> 
+                                                        <a className="a" target="_blank" rel="noopener noreferrer" href={resume.firebase_link}> 
                                                             Resume
                                                         </a>
                                                 </Button>
@@ -76,7 +74,9 @@ class ProjectPage extends Component {
                                 </Router>
                         </section>
                 </header> 
-            <h1 className="whitetext">Portfolio</h1>
+                <div align="center">
+                    <h1 className="mainPageTitles">Portfolio</h1>
+                </div>
           <ProjectCard />
         </div>
         );

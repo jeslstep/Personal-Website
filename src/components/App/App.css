@@ -1,66 +1,25 @@
-
+/* entire app */
 .App {
-  font-family: 'Montserrat',
-  sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
   text-align: center;
-  background-color: black;
-  border-style: solid;
-  border-width: 4px;
-  border-color: #AE2F2C;
-}
-
-.App2 {
-  font-family: 'Montserrat',
-    sans-serif;
-  text-align: center;
-  border-style: solid;
-  border-width: 4px;
-  border-color: #AE2F2C;
+  background-color: white;
 }
 
 section {
   display: inline-block;
 }
 
-.margin-left {
-  margin-left: 15px;
+/* links */
+.a {
+  color: #AE2F2C;
 }
 
-.margin-right{
-  margin-right: 15px;
-  margin: 5px;
+.b {
+  color: black;
 }
 
-.App-header {
-  background-color: #222;
-  height: auto;
-  padding: 20px;
-  color: white;
- 
-}
-
-.table {
-  align-content: center;
-  margin: 20px;
-  width: 400px;
-  height: auto;
-  
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.card{
-  margin: 25px;
-  height: auto;
-  max-width: 450px;
-}
-
-.App-intro {
-  font-size: large;
-}
-
+/* header imgage */
 #image {
   border-style: solid;
   border-width: 4px;
@@ -73,13 +32,71 @@ section {
   border-radius: 50%;
 }
 
-.float-right {
-  margin: 5px;
+/* titles */
+.App-header {
+  background-color: white;
+  height: auto;
+  padding: 20px;
+  color: black;
+  font-size: large;
 }
 
-#giveMargin{
-  margin-top: 10px;
+.developerTitle {
+  padding: 20px;
 }
+
+.mainPageTitles {
+  color: black;
+  padding-bottom: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-bottom: solid;
+  border-width: 4px;
+  border-color: #AE2F2C;
+  width: 50%;
+}
+
+/* ProjectCards */
+.card {
+  margin: 25px;
+  height: auto;
+  max-width: 450px;
+  border-style: solid;
+  border-width: 2px;
+  border-color: lightgray;
+}
+
+.divforcard {
+  min-height: 100px;
+  max-width: 450px;
+}
+
+/* Admin */
+.App2 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+}
+
+.table {
+  align-content: center;
+  margin: 20px;
+  width: 400px;
+  height: auto;
+
+}
+
+.card2 {
+  padding: 20px;
+  margin: 15px;
+}
+
+/* chip in technologies component */
+.margin-right{
+  margin-right: 15px;
+  margin: 5px;
+  background-color: #AE2F2C;
+}
+
 
 .marginBottom{
   margin-bottom: 10px;
@@ -89,36 +106,4 @@ section {
     padding: 20px;
 }
 
-.whitetext {
-  color: white;
-  margin-top: 30px;
-}
-
-/* used in TechnologiesUsed component */
-.whitetextTech {
-  color: white;
-  margin-bottom: 20px;
-}
-
-.divforcard {
-  min-height: 100px;
-  max-width: 450px;
-}
-
-.divforcard2 {
-  margin-top: 20px;
-}
-
-.card2{
-  padding: 20px;
-  margin: 15px;
-}
-
-.a {
-  color: red;
-}
-
-.b {
-  color: black;
-}
 
