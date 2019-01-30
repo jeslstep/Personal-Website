@@ -10,8 +10,9 @@ class Contact extends Component {
             <h1 className="mainPageTitles">Contact</h1>
         </div>
         <div className="padding">
-          <h6>Phone: 507-398-7831</h6>
-          <h6>Email: jeslstep1@gmail.com</h6>
+          <h6>Phone:  <a className="a" href="tel:1-507-398-7831">507-398-7831</a></h6>
+          <h6>Email: <a className="a" href="mailto:jeslstep1@gmail.com">jeslstep1@gmail.com</a></h6>
+         
        </div>
        
     </div>
