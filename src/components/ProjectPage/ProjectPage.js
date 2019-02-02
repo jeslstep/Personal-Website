@@ -81,6 +81,9 @@ class ProjectPage extends Component {
                     <h1 className="mainPageTitles">Portfolio</h1>
                 </div>
           <ProjectCard />
+                <div align="center">
+                    <h1 className="mainPageTitles">Technology Used</h1>
+                </div>
           <TechnologiesUsed/>
         </div>
         );
