@@ -36,7 +36,7 @@ class ProjectPage extends Component {
                             <img id="image" alt= "Jessica Stephens"
                             src = "https://avatars2.githubusercontent.com/u/40326640?s=460&v=4"/>
                                 <div className="padding">
-                                <h1><strong>Jessica <br/> Stephens</strong></h1>
+                                <h1><strong>Jessica<br/>Stephens</strong></h1>
                                 <h6 className="developerTitle">Software Developer</h6>
                                 </div>
                                 <Router>
