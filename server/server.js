@@ -19,7 +19,7 @@ const http = require("http");
 
 setInterval(function () {
     http.get("http://jessica-stephens-93248.herokuapp.com");
-}, 120000); // every 2 minutes (120000)
+}, 3000000); // every 50 minutes (3000000)
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
