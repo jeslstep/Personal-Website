@@ -15,10 +15,9 @@ app.use('/resume', resumeRouter);
 app.use('/tags', tagsRouter);
 
 /** ---------- keep app awake on heroku ---------- **/
-const http = require("http");
 
 setInterval(function () {
-    http.get("http://jessica-stephens-93248.herokuapp.com");
+    app.get("http://jessica-stephens-93248.herokuapp.com");
 }, 900000); // every 15 minutes (900000)
 
 /** ---------- START SERVER ---------- **/
