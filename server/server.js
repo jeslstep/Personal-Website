@@ -14,6 +14,13 @@ app.use('/projects', projectsRouter);
 app.use('/resume', resumeRouter);
 app.use('/tags', tagsRouter);
 
+/** ---------- keep app awake on heroku ---------- **/
+const http = require("http");
+
+setInterval(function () {
+    http.get("http://jessica-stephens-93248.herokuapp.com");
+}, 120000); // every 2 minutes (120000)
+
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
     console.log('Listening on port: ', port);

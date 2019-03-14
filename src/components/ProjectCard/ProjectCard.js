@@ -38,17 +38,21 @@ class ProjectCard extends Component {
                 title={project.name}
               />
               <CardContent>
-                <h2>{project.name}</h2>
+                <br/>
+                <center>
+                  <h2>{project.name}</h2>
+                </center>
+                <br/>
                 <div className="divforcard">
                 <p>{project.description}</p>
                 </div>
               </CardContent>
             <div className="divforcard">
-             
+             <center>
               <Button  color="secondary"><a className="a" target="_blank" rel="noopener noreferrer" href={project.website}>Website</a></Button>
                <a className="b" target="_blank" rel="noopener noreferrer" href={project.website}>|</a>
               <Button color="secondary"><a className="a" target="_blank" rel="noopener noreferrer" href={project.github}> Github</a></Button>
-             
+             </center>
             </div>
           </Card>
           </section>
