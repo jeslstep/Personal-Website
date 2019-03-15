@@ -14,7 +14,7 @@ class App extends Component {
       this.interval = setInterval(() => {
          this.keepAppAwake();
         console.log('waking app');
-      }, 30000); // every 30 seconds (30000)
+      }, 900000); // every 15 minutes (900000)
    
   }
 
