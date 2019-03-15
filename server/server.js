@@ -17,10 +17,11 @@ app.use('/tags', tagsRouter);
 /** ---------- keep app awake on heroku ---------- **/
 const axios = require('axios');
 
-app.get('/wakeUp', (req, res) => {
+app.get('/wakeup', (req, res) => {
     axios.get(`http://jessica-stephens-93248.herokuapp.com`)
         .then((response) => {
-            console.log("waking app")
+            console.log("waking app");
+            res.sendStatus(200);
         })
         .catch((error) => {
             res.sendStatus(500);

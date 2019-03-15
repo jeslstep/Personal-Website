@@ -20,7 +20,7 @@ class App extends Component {
 
   // GET request to server to keep app from sleeping
   keepAppAwake = () => {
-    axios.get('/wakeUp')
+    axios.get('/wakeup')
       .then((response) => {
         console.log('app awake');
       })
