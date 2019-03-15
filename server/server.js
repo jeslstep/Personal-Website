@@ -15,10 +15,18 @@ app.use('/resume', resumeRouter);
 app.use('/tags', tagsRouter);
 
 /** ---------- keep app awake on heroku ---------- **/
+const axios = require('axios');
 
-setInterval(function () {
-    app.get("http://jessica-stephens-93248.herokuapp.com");
-}, 900000); // every 15 minutes (900000)
+app.get('/wakeUp', (req, res) => {
+    axios.get(`http://jessica-stephens-93248.herokuapp.com`)
+        .then((response) => {
+            console.log("waking app")
+        })
+        .catch((error) => {
+            res.sendStatus(500);
+            console.log('error in waking app', error);
+        })
+})
 
 /** ---------- START SERVER ---------- **/
 app.listen(port, function () {
