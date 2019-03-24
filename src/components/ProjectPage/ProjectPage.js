@@ -4,6 +4,7 @@ import { HashRouter as Router } from 'react-router-dom';
 import ProjectCard from '../ProjectCard/ProjectCard';
 import Button from '@material-ui/core/Button';
 import TechnologiesUsed from '../TechnologiesUsed/TechnologiesUsed';
+import Contact from '../Contact/Contact';
 
 class ProjectPage extends Component {
 
@@ -32,14 +33,14 @@ class ProjectPage extends Component {
         return (
             <div className="App">
                 <header className="App-header">
-                        <section>
+                        <section className="slideDown">
                             <img id="image" alt= "Jessica Stephens"
                             src = "https://avatars2.githubusercontent.com/u/40326640?s=460&v=4"/>
-                                <div className="padding">
-                                <h1><strong>Jessica<br/>Stephens</strong></h1>
+                                <div className="padding slideDown">
+                                <h1><strong>JESSICA<br/>STEPHENS</strong></h1>
                                 <h6 className="developerTitle">Software Developer</h6>
                                 </div>
-                                <Router>
+                                <Router >
                                     <div>
                                     <section>
                                         <Button 
@@ -77,14 +78,18 @@ class ProjectPage extends Component {
                                 </Router>
                         </section>
                 </header> 
-                <div align="center">
-                    <h1 className="mainPageTitles">Portfolio</h1>
+                <div className="slideDown" align="center">
+                    <h1 className="mainPageTitles slideDown">Portfolio</h1>
                 </div>
-          <ProjectCard />
+                    <ProjectCard />
                 <div align="center">
-                    <h1 className="mainPageTitles">Technology Used</h1>
+                    <h1 className="mainPageTitles slideDown">Technology Used</h1>
                 </div>
-          <TechnologiesUsed/>
+                    <TechnologiesUsed />
+                <div align="center">
+                    <h1 className="mainPageTitles slideDown">Contact</h1>
+                </div>
+                    <Contact />
         </div>
         );
     }

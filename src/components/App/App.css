@@ -10,6 +10,30 @@ section {
   display: inline-block;
 }
 
+.slideDown {
+  animation-name: slideDown;
+
+  animation-duration: 1.5s;
+  
+  animation-timing-function: ease;
+
+  visibility: visible !important;
+}
+
+@keyframes slideDown {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  50% {
+    transform: translateY(8%);
+  }
+
+  100% {
+    transform: translateY(0%);
+  }
+}
+
 /* links */
 .a {
   color: #AE2F2C;
