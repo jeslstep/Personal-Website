@@ -23,7 +23,7 @@ class TechnologiesUsed extends Component {
 
   render (){
   return (
-    <div className="App slideDown">
+    <div className="App">
         <div className="padding">
             {this.props.reduxState.tags.map( tag => (
                 <Chip style={style} key={tag.id} className="margin-right" label={tag.name} variant="outlined"/>

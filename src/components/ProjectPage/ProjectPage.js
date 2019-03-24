@@ -79,15 +79,15 @@ class ProjectPage extends Component {
                         </section>
                 </header> 
                 <div className="slideDown" align="center">
-                    <h1 className="mainPageTitles slideDown">Portfolio</h1>
+                    <h1 className="mainPageTitles">Portfolio</h1>
                 </div>
                     <ProjectCard />
                 <div align="center">
-                    <h1 className="mainPageTitles slideDown">Technology Used</h1>
+                    <h1 className="mainPageTitles">Technology Used</h1>
                 </div>
                     <TechnologiesUsed />
                 <div align="center">
-                    <h1 className="mainPageTitles slideDown">Contact</h1>
+                    <h1 className="mainPageTitles">Contact</h1>
                 </div>
                     <Contact />
         </div>
