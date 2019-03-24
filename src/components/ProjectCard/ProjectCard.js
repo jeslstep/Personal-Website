@@ -27,7 +27,7 @@ class ProjectCard extends Component {
         <div>
             {this.props.reduxState.projects.map( project =>(
               <section key={project.id}>
-              <Card className="card slideDown">
+              <Card className="card">
                   <CardMedia
                     component= "img"
                     height = "300"
