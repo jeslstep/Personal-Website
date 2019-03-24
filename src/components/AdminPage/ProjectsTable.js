@@ -32,14 +32,14 @@ render() {
                 <table className = "table table-md">
                     <thead>
                         <tr className="App-title">
-                            <th>Project</th><th>Thumbnail</th><th>Delete</th>
+                            <th>Project</th><th>Website</th><th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {this.props.reduxState.projects.map(project  => (  
                             <tr key={project.id}>
                                 <td>{project.name}</td>
-                                <td>{project.thumbnail}</td>
+                                <td><a href={project.website} target="_blank">{project.website}</a></td>
                                 <td><Button varient="contained" color="secondary"
                                 onClick={() =>  {this.deleteProject(project.id)}} 
                                 >DELETE</Button></td>

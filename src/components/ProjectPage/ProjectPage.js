@@ -38,19 +38,20 @@ class ProjectPage extends Component {
                             src = "https://avatars2.githubusercontent.com/u/40326640?s=460&v=4"/>
                                 <div className="padding slideDown">
                                 <h1><strong>JESSICA<br/>STEPHENS</strong></h1>
-                                <h6 className="developerTitle">Software Developer</h6>
+                                <h6 className="developerTitle slideDown">Software Developer</h6>
                                 </div>
                                 <Router >
                                     <div>
-                                    <section>
+                                    <section >
                                         <Button 
+                                        
                                             varient="contained">
                                                 <a className="a" target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jessica-stephens-784b88166/">
                                                     LinkedIn
                                                 </a>
                                          </Button>
                                     </section>
-                                    <section> <a className="b">|</a></section> 
+                                    <section> <a className="b ">|</a></section> 
                                     <section>
                                         <Button
                                             varient="contained">

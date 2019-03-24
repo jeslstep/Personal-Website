@@ -7,6 +7,8 @@ import ProjectsTable from './ProjectsTable';
 import ProjectImgUpload from './ProjectImgUpload';
 import Card from '@material-ui/core/Card';
 import Button from '@material-ui/core/Button';
+import Chip from '@material-ui/core/Chip';
+import TechnologiesUsed from '../TechnologiesUsed/TechnologiesUsed';
 
 class AdminPage extends Component {
 
@@ -75,10 +77,15 @@ class AdminPage extends Component {
                         />
                         <br/>
                         <Button onClick={this.tagPostObjPost} color='primary' varient='contained'>Add New Tech Tag</Button>
+                        <h1>Tags Added</h1>
+                         <br/>
+                            <TechnologiesUsed/>
                         </Card>
                         </section>
                 </div>
+                <section>
                     <ProjectsTable />
+                </section>
                    
             </div>
         );

@@ -10,14 +10,19 @@ section {
   display: inline-block;
 }
 
-.slideDown {
-  animation-name: slideDown;
+/* Animation effect  */
 
-  animation-duration: 1.5s;
-  
-  animation-timing-function: ease;
+.slideDown{
+	animation-name: slideDown;
+	-webkit-animation-name: slideDown;
 
-  visibility: visible !important;
+	animation-duration: 1.5s;
+	-webkit-animation-duration: 1.5s;
+
+	animation-timing-function: ease;
+	-webkit-animation-timing-function: ease;
+
+	visibility: visible !important;
 }
 
 @keyframes slideDown {
@@ -32,6 +37,18 @@ section {
   100% {
     transform: translateY(0%);
   }
+}
+
+@-webkit-keyframes slideDown {
+	0% {
+		-webkit-transform: translateY(-100%);
+	}
+	50%{
+		-webkit-transform: translateY(8%);
+	}			
+	100% {
+		-webkit-transform: translateY(0%);
+	}	
 }
 
 /* links */
