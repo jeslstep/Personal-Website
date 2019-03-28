@@ -137,6 +137,8 @@ section {
 .card2 {
   padding: 20px;
   margin: 15px;
+  max-width: 350px;
+  height: 350px;
 }
 
 /* chip in technologies component */

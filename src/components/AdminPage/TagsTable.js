@@ -2,24 +2,24 @@ import React, { Component } from 'react';
 import {connect} from 'react-redux';
 import Button from '@material-ui/core/Button';
 
-class ProjectsTable extends Component {
+class TagsTable extends Component {
     // Renders the entire app on the DOM
     componentDidMount() {
-        this.getProject();
+        this.getTags();
     }
 
     // getProject dispatches a call to get projects 
-    getProject = (event) => {
-        this.props.dispatch({type: 'GET_PROJECTS'});
+    getTags = (event) => {
+        this.props.dispatch({type: 'GET_TAGS'});
     }
 
 
     // delete project
     deleteProject = (id) => { 
     //eslint-disable-next-line
-        if (confirm("Are you sure you want to delete this project?")) {
+        if (confirm("Are you sure you want to delete this tag?")) {
             this.props.dispatch({
-                type: 'DELETE_PROJECT',
+                type: 'DELETE_TAG',
                 payload: id
             });
         }
@@ -29,20 +29,19 @@ class ProjectsTable extends Component {
 render() { 
     return (
         <div align="center">
-        <h1>Projects</h1>
+        <h1>Tags</h1>
                 <table className = "table table-md">
                     <thead>
                         <tr className="App-title">
-                            <th>Project</th><th>Website</th><th>Delete</th>
+                            <th>Tag</th><th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {this.props.reduxState.projects.map(project  => (  
-                            <tr key={project.id}>
-                                <td>{project.name}</td>
-                                <td><a href={project.website} target="_blank">{project.website}</a></td>
+                        {this.props.reduxState.tags.map(tag  => (  
+                            <tr key={tag.id}>
+                                <td>{tag.name}</td>
                                 <td><Button varient="contained" color="secondary"
-                                onClick={() =>  {this.deleteProject(project.id)}} 
+                                onClick={() =>  {this.deleteProject(tag.id)}} 
                                 >DELETE</Button></td>
                             </tr>  
                         ))}
@@ -59,4 +58,4 @@ const mapReduxStateToProps = (reduxState) => ({
     reduxState
 });
 
-export default connect(mapReduxStateToProps)(ProjectsTable);
+export default connect(mapReduxStateToProps)(TagsTable);

@@ -75,8 +75,8 @@ class ResumeUpload extends Component {
   render() {
     return (
         <div className="padding">
-            <Card>
-                <CardContent>
+            <Card className="card2">
+                <CardContent className="divforcard">
                     <h1 className="padding">Upload Resume</h1>
                         <div className="padding">
                             <TextField 

@@ -7,7 +7,7 @@ import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
 import { CardContent } from '@material-ui/core';
 
-class ProjectImgUpload extends Component {
+class ProjectAddImgUpload extends Component {
 
     // state to store selected file
     state ={
@@ -107,17 +107,20 @@ class ProjectImgUpload extends Component {
 render() {
     return (
         <div>
-            <Card>
+            <Card className="card2">
                 <CardContent>
                     <h1 className="padding">Add a Project</h1>
-                    <div>
+                      <div className="container">
+                        <div className="row"> 
+                    <section className="col-sm">
                         <TextField 
                             type="file" 
                             onChange={this.handleSelectedFile}
                         />
+                    </section>
                     </div>
-                    <br/>
-                    <div>
+                    <div className="row"> 
+            <section className="col-sm">
                         <TextField 
                             id="standard-name" 
                             value={this.state.projectPostObj.name} 
@@ -131,7 +134,8 @@ render() {
                             label="Description" 
                             onChange={this.handleChangeFor('description')}
                         />
-                        <br/>
+                        </section>
+                        <section className="col-sm">
                         <TextField 
                             id="standard-name" 
                             value={this.state.projectPostObj.website} 
@@ -145,6 +149,8 @@ render() {
                             label="Github" 
                             onChange={this.handleChangeFor('github')}
                         />
+                        </section>
+                        </div>
                         <br/>
                         <Button varient="contained" color="primary" onClick={this.handleFileUpload} >Add Project</Button>
                     </div>
@@ -160,4 +166,4 @@ const mapReduxStateToProps = (reduxState) => ({
 });
 
 
-export default connect(mapReduxStateToProps)(ProjectImgUpload)
+export default connect(mapReduxStateToProps)(ProjectAddImgUpload)
