@@ -32,7 +32,6 @@ class AddTagCard extends Component {
            });
            this.setState({
                tag_name: '',
-            
            });
     }
   

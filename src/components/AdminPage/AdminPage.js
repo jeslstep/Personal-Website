@@ -7,7 +7,9 @@ import ProjectImgUpload from './ProjectAddImgUpload';
 import AddTagCard from './AddTagCard';
 import TagsTable from './TagsTable';
 
-
+const style = {
+    marginTop: 25
+}
 
 class AdminPage extends Component {
 
@@ -44,7 +46,7 @@ class AdminPage extends Component {
                         <AddTagCard/>  
                     </section>
                     </div>
-                     <div className="row">
+                     <div style={style} className="row">
                     <section className="col-sm">
                         <ProjectsTable />
                     </section>

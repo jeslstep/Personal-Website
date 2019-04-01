@@ -106,7 +106,7 @@ class ProjectAddImgUpload extends Component {
 
 render() {
     return (
-        <div>
+        <div className="padding">
             <Card className="card2">
                 <CardContent>
                     <h2 className="padding">Add a Project</h2>
