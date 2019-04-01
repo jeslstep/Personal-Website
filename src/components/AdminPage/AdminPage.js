@@ -5,7 +5,6 @@ import ResumeUpload from './ResumeUpload';
 import ProjectsTable from './ProjectsTable';
 import ProjectImgUpload from './ProjectAddImgUpload';
 import AddTagCard from './AddTagCard';
-import TagsAddedCard from './TagsAddedCard';
 import TagsTable from './TagsTable';
 
 

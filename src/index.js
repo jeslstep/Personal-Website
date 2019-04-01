@@ -87,6 +87,19 @@ function* addTagsSaga(action) {
     }
 }
 
+// saga to deletes tags from server
+function* deleteTagSaga(action) {
+    console.log('in deleteTagSaga, deleting tag id:', action.payload);
+    const projectid = action.payload
+    try {
+        yield call(axios.delete, `/tags/delete/${projectid}`);
+       // get tags after a tag is delete to refresh the DOM
+       yield put({ type: 'GET_TAGS' });
+    } catch (error) {
+        console.log('error in deleteTagSaga with delete request', error);
+    }
+}
+
 // addResumeSaga to send resume firebase_link to server
 function* addResumeSaga(action) {
      console.log('in addResumeSaga, sending firebase_link:', action.payload);
@@ -108,6 +121,7 @@ function* rootSaga() {
      yield takeEvery('ADD_TAGS', addTagsSaga);
      yield takeEvery('ADD_RESUME', addResumeSaga);
      yield takeEvery('DELETE_PROJECT', deleteProjectSaga);
+     yield takeEvery('DELETE_TAG', deleteTagSaga);
      yield takeEvery('ADD_PROJECT', addProjectsSaga);
 }
 

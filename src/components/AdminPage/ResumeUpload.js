@@ -77,7 +77,7 @@ class ResumeUpload extends Component {
         <div className="padding">
             <Card className="card2">
                 <CardContent className="divforcard">
-                    <h1 className="padding">Upload Resume</h1>
+                    <h2 className="padding">Upload Resume</h2>
                         <div className="padding">
                             <TextField 
                             type="file" 

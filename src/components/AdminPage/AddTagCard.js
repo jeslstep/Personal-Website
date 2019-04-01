@@ -42,7 +42,7 @@ class AddTagCard extends Component {
         <div className="padding">
             <Card className="card2">
                 <CardContent>
-                    <h1 className="padding">Add a new Tech Tag</h1>
+                    <h2 className="padding">Add a Tag</h2>
                         <div className="padding">
                             <TextField 
                                 id="standard-name" 

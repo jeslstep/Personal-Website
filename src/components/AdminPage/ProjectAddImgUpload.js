@@ -109,7 +109,7 @@ render() {
         <div>
             <Card className="card2">
                 <CardContent>
-                    <h1 className="padding">Add a Project</h1>
+                    <h2 className="padding">Add a Project</h2>
                       <div className="container">
                         <div className="row"> 
                     <section className="col-sm">
